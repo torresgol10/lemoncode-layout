@@ -1,0 +1,87 @@
+@use "themes-01" as t1;
+@use "themes-02" as t2;
+
+@mixin themes(
+  $color-base,
+  $color-important,
+  $color-warning,
+  $border-radius,
+  $font-primary,
+  $font-primary-weight,
+  $font-secondary,
+  $font-secondary-weight,
+  $box-shadow
+) {
+  .color-base {
+    background-color: $color-base;
+    border-radius: $border-radius;
+  }
+  .color-important {
+    background-color: $color-important;
+    border-radius: $border-radius;
+  }
+  .color-warning {
+    background-color: $color-warning;
+    border-radius: $border-radius;
+  }
+  .font-principal {
+    font-family: $font-primary;
+    font-weight: $font-primary-weight;
+  }
+  .font-secondary {
+    font-family: $font-secondary;
+    font-weight: $font-secondary-weight;
+  }
+  .box-shadow {
+    box-shadow: $box-shadow;
+  }
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.box {
+  padding: 40px;
+  margin: 5px;
+  & .color-box-text {
+    color: black;
+  }
+}
+
+.themes1 {
+  @include themes(
+    t1.$color-base,
+    t1.$color-important,
+    t1.$color-warning,
+    t1.$border-radius,
+    t1.$font-primary,
+    t1.$font-primary-weight,
+    t1.$font-secondary,
+    t1.$font-secondary-weight,
+    t1.$box-shadow
+  );
+}
+
+.themes2 {
+    @include themes(
+      t2.$color-base,
+      t2.$color-important,
+      t2.$color-warning,
+      t2.$border-radius,
+      t2.$font-primary,
+      t2.$font-primary-weight,
+      t2.$font-secondary,
+      t2.$font-secondary-weight,
+      t2.$box-shadow
+    );
+  }
+  
