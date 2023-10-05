@@ -1,0 +1,47 @@
+@mixin color-lighten-darken($base-color) {
+  @for $i from 1 through 4 {
+    .lighten-#{$i} {
+      background-color: lighten($base-color, $i * 8%);
+    }
+  }
+
+  @for $i from 1 through 4 {
+    .darken-#{$i} {
+      background-color: darken($base-color, $i * 8%);
+    }
+  }
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+}
+
+.container-1 {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.box {
+  padding: 40px;
+  & .color-box-text {
+    color: white;
+  }
+}
+
+$palette: (
+  "blue": #28a745,
+  "red": #17a2b8,
+  "yellow": #ffc107,
+);
+
+@each $class, $color in $palette {
+  .#{$class} {
+    & .base-color {
+      background-color: $color;
+      padding: 40px 60px;
+    }
+    @include color-lighten-darken($color);
+  }
+}
