@@ -6,11 +6,12 @@ html {
 }
 
 header {
-  display: grid;
-  grid-template-areas: "a a a a";
+  display: flex;
+  flex-direction: row;
 }
 
 div {
+  width: 25%;
   padding: 10px 0;
   background-color: darkcyan;
   &:hover {
@@ -25,8 +26,9 @@ div {
 
 @media screen and (max-width: 800px) {
   header {
-    grid-template-areas: "a" "a" "a" "a";
+    flex-direction: column;
     div {
+      width: 100%;
       display: flex;
       justify-content: center;
       span {
