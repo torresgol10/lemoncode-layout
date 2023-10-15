@@ -1,0 +1,123 @@
+$breakpoint-tablet: 1280px;
+$breadpoint-movil: 768px;
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Jost", sans-serif;
+    background-color: #141414;
+    color: white;
+    margin: 0.5rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    & .header-logo,
+    .header-buttons {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        & .platform-title {
+            font-size: 1.5rem;
+            @media screen and (max-width: $breakpoint-tablet) {
+                display: none;
+            }
+        }
+    }
+    & .header-buttons div {
+        padding: 0.5rem;
+        &:hover {
+            cursor: pointer;
+            color: black;
+            background-color: white;
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
+    & .section-title #top-text::after {
+        content: "5";
+        font-weight: bold;
+        @media screen and (max-width: $breakpoint-tablet) {
+            content: "3";
+        }
+    }
+    @media screen and (max-width: $breadpoint-movil) {
+        font-size: 2rem;
+    }
+    & section {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-bottom: 1.5rem;
+        &.top {
+            .top-item {
+                width: 20%;
+                min-width: 225px;
+                & img {
+                    width: 100%;
+                }
+            }
+            @media screen and (max-width: $breakpoint-tablet) {
+                & {
+                    justify-content: flex-end;
+                    & .top-item {
+                        width: 33%;
+                        &:nth-child(-n + 2) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width: $breadpoint-movil) {
+                & {
+                    flex-direction: column-reverse;
+                    & .top-item{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &.first,
+        &.second {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 5px;
+            .item {
+                width: calc(25% - 5px);
+                min-width: 250px;
+                & img {
+                    width: 100%;
+                }
+                &:nth-child(5),
+                &:nth-child(6) {
+                    width: calc(50% - 5px);
+                }
+                @media screen and (max-width: $breakpoint-tablet) {
+                    &,
+                    &:nth-child(5),
+                    &:nth-child(6) {
+                        width: calc(33% - 5px);
+                    }
+                }
+            }
+            @media screen and (max-width: $breadpoint-movil) {
+                & {
+                    gap: 0;
+                    & .item,
+                    & .item:nth-child(5),
+                    & .item:nth-child(6) {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
